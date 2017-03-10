@@ -7,6 +7,10 @@ defmodule Dango.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+
+    if Mix.env == :test do
+      plug Dango.SessionBackdoorPlug
+    end
   end
 
   pipeline :api do
@@ -17,10 +21,8 @@ defmodule Dango.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    get "/sign_in", SessionController, :new, as: :sign_in
+    delete "/sign_out", SessionController, :delete, as: :sign_out
+    resources "/session", SessionController, only: [:create], singleton: true
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", Dango do
-  #   pipe_through :api
-  # end
 end

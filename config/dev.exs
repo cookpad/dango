@@ -8,6 +8,7 @@ use Mix.Config
 # with brunch.io to recompile .js and .css sources.
 config :dango, Dango.Endpoint,
   http: [port: 4000],
+  bcrypt: Comeonin.Bcrypt,
   debug_errors: true,
   code_reloader: true,
   check_origin: false,

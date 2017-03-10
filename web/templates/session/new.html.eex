@@ -1,0 +1,22 @@
+<section class="session">
+  <h1 class="session__intro">
+    <%= gettext("Sign in") %>
+  </h1>
+
+  <%= form_for @conn, session_path(@conn, :create), [as: :session], fn form -> %>
+    <div class="session__email">
+      <%= label form, :email %>
+      <%= email_input form, :email, required: true %>
+    </div>
+
+    <div class="session__password">
+      <%= label form, :password %>
+      <%= password_input form, :password, required: true %>
+    </div>
+
+    <div class="session__submit">
+      <%= submit gettext("Sign in"), data: [role: "submit-session"] %>
+    </div>
+  <% end %>
+</section>
+

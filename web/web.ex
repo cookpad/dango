@@ -36,6 +36,7 @@ defmodule Dango.Web do
 
       import Dango.Router.Helpers
       import Dango.Gettext
+      import Dango.Session, only: [current_user: 1, signed_in?: 1]
     end
   end
 
@@ -52,6 +53,7 @@ defmodule Dango.Web do
       import Dango.Router.Helpers
       import Dango.ErrorHelpers
       import Dango.Gettext
+      import Dango.Session, only: [current_user: 1, signed_in?: 1]
     end
   end
 
